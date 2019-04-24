@@ -1,5 +1,5 @@
 call plug#begin()
-	Plug 'roxma/nvim-completion-manager'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'scrooloose/nerdtree'
@@ -30,9 +30,12 @@ set nowrap
 " clipboard settings
 set clipboard+=unnamedplus
 
+" deoplete settings 
+let g:deoplete#enable_at_startup = 1
+
 " preferences
 inoremap jk <ESC>
-"let mapleader = ","
+let mapleader = ","
 set pastetoggle=<F2>
 " j/k will move virtual lines (lines that wrap)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -65,6 +68,15 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
-      
+let g:vimtex_compiler_progname='nvr'     
+
+" snippets
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
 
 
