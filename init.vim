@@ -1,5 +1,5 @@
 call plug#begin()
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'scrooloose/nerdtree'
@@ -9,6 +9,7 @@ call plug#begin()
     Plug 'scrooloose/nerdcommenter'
     Plug 'lifepillar/vim-solarized8'
 call plug#end()
+
 
 " basics
 filetype plugin indent on
@@ -34,9 +35,12 @@ set clipboard+=unnamedplus
 let g:deoplete#enable_at_startup = 1
 
 " preferences
-inoremap jk <ESC>
+inoremap jj <ESC>
+tnoremap <Esc> <C-\><C-n>
+let g:loaded_python3_provider=1
 let mapleader = ","
 set pastetoggle=<F2>
+setlocal spell spelllang=ru_yo,en_us
 " j/k will move virtual lines (lines that wrap)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -70,13 +74,18 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_progname='nvr'     
 
-" snippets
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 
 
-
+let g:UltiSnipsSnippetDirectories=['/home/ilia/Documents/latex/latex-latex_blank_doc/UltiSnips']
