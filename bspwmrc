@@ -23,10 +23,17 @@ bspc config presel_border_color "#26E2FF"
 # Settings
 bspc config border_width                  2
 bspc config window_gap                    2
-bspc config top_padding                   18
+bspc config top_padding                   2
 bspc config single_monocle                true
 bspc config borderless_monocle            true
 bspc config gapless_monocle               true
 bspc config pointer_follows_monitor       true
 bspc config focus_follows_pointer         true
 bspc config click_to_focus                true
+
+# CLion Java-machine Patch
+wmname LG3D
+
+# Changing language
+setxkbmap -layout "us,ru"
+setxkbmap -option "grp:caps_toggle,grp_led:scroll,compose:ralt"
