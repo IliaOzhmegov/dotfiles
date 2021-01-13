@@ -1,21 +1,33 @@
 "Plug-ins
 call plug#begin('~/.config/nvim/plugged')
+"Plug 'airblade/vim-gitgutter'
+"Plug 'rhysd/git-messenger.vim'
+"
+"Plug 'machakann/vim-sandwich'
+"
+"Plug 'tommcdo/vim-exchange'
+"
+"Plug 'dhruvasagar/vim-zoom'
+"
+"Plug 'jiangmiao/auto-pairs'
+" For Python
+    Plug 'jupyter-vim/jupyter-vim'
 " Tools
+	Plug 'chrisbra/csv.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/limelight.vim'
     Plug 'tpope/vim-surround'
+    Plug 'jiangmiao/auto-pairs'
     Plug 'scrooloose/nerdtree'
+    Plug 'preservim/nerdcommenter'
+    Plug 'justinmk/vim-sneak'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " For R
     Plug 'jalvesaq/Nvim-R'
     " assuming you're using vim-plug: https://github.com/junegunn/vim-plug
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
     Plug 'gaalcaras/ncm-R'
-        " enable ncm2 for all buffers
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-
-    " IMPORTANT: :help Ncm2PopupOpen for more information
-    set completeopt=noinsert,menuone,noselect
 
     " NOTE: you need to install completion sources to get completions. Check
     " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
@@ -33,11 +45,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'chriskempson/base16-vim'
 call plug#end() 
 
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
 " basics
 set encoding=UTF-8
 filetype plugin indent on
 syntax on 
-set autoread wildmode=longest,list,full
+set autoread wildmode=longest,full,full
 set spell spelllang=en_us
 "tnoremap <Esc> <C-\><C-n>
 
@@ -93,7 +111,6 @@ setlocal spell spelllang=ru_yo,en_us
 "let mapleader="\"
 
 "map <leader><Space> :EditVifm .<CR>
-
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
@@ -140,9 +157,20 @@ au User Ncm2Plugin call ncm2#register_source({
         \ 'complete_pattern': ':\s*',
         \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
         \ })
+autocmd FileType r inoremap <buffer> > <Esc>:normal! a %>%<CR>a 
+autocmd FileType rnoweb inoremap <buffer> > <Esc>:normal! a %>%<CR>a 
+autocmd FileType rmd inoremap <buffer> > <Esc>:normal! a %>%<CR>a 
 
 " setting for terminal
 augroup TerminalStuff
    au!
   autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
+
+
+" vim-sneak
+let g:sneak#label = 1
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
