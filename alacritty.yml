@@ -1,75 +1,92 @@
-# Window Customization
-window:
-  dimensions:
-    columns: 172
-    lines: 52
-  dynamic_title: true
-  padding:
-    x: 15
-    y: 15
-  decorations: none
-scrolling:
-  history: 10000
-  multiplier: 3
-background_opacity: .9
+# ================================================================================================================================================================================================================================================================================================================================================================================================================
+# modified 2021-06-28
+#
 
-# Font Customization
+env:
+  # This value is used to set the `$TERM` environment variable for 
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: alacritty
+
+window:
+  # Spread additional padding evenly around the terminal content.
+  padding:
+    x: 10
+    y: 10
+  # Remove buttons
+  decorations: Full
+  # Open in full screen 
+  #startup_mode: SimpleFullscreen
+  startup_mode: Maximized
+  # Dimensions if not SimpleFullscreen
+  dimensions:
+    columns: 290
+    lines: 38
+  # Make background slightly transparent
+  opacity: 0.90
+
+cursor:
+  # Block Underline or Beam
+  style: Block
+
 font:
   normal:
+    # Needs to be powerline font if using zsh theme with powerline
+    #family: Source Code Pro for Powerline   
+    #family: "Hack"
     family: Menlo
-    style: Regular
-  bold:
-    family: Menlo
-    style: Bold
-  italic:
-    family: Menlo
-    style: Italic
-  size: 14
-  offset:
-    x: 0
-    y: 0
-  glyph_offset:
-    x: 0
-    y: 0
-  use_thin_strokes: false
-  debug:
-    persistent_logging: false
-draw_bold_text_with_bright_colors: true
+  # Font size
+  size: 16
 
-# Color Settings (Gruvbox)
+  # Better font rendering for mac
+  use_thin_strokes: true
+
+# Colors (Hyper)
 colors:
+  # Default colors
   primary:
-    background: '#1d2021'
-    foreground: '#ebdbb2'
+    background: '#111111'
+    foreground: '#ffffff'
+  cursor:
+    text: '#F81CE5'
+    cursor: '#ffffff'
 
+  # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+    black:   '#000000'
+    red:     '#fe0100'
+    green:   '#00a600'
+    yellow:  '#feff00'
+    blue:    '#0066ff'
+    magenta: '#cc00ff'
+    cyan:    '#00ffff'
+    white:   '#d0d0d0'
 
+  # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+    black:   '#808080'
+    red:     '#fe0100'
+    green:   '#00d900'
+    yellow:  '#feff00'
+    blue:    '#0066ff'
+    magenta: '#cc00ff'
+    cyan:    '#00ffff'
+    white:   '#FFFFFF'
 
-  selection:
-    text: '0xffffff'
-    background: '0xdc3232'
-    white:   '0xffffff'
-cursor:
-  style: Block
-  unfocused_hollow: true
+selection:
+  # This string contains all characters that are used as separators for
+  # "semantic words" in Alacritty.
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
-  # key_bindings:
-  # - { key: N, mods: Control, action: SpawnNewInstance }
+  # When true, selected text will be copied to the primary clipboard
+  save_to_clipboard: true
 
+# Login shell with arguments
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+# Startup directory, unset or None for home directory
+working_directory: None
