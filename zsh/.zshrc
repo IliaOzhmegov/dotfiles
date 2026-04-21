@@ -70,9 +70,20 @@ if command -v fzf &>/dev/null; then
 fi
 
 # ---------------------
+# Yazi wrapper (cd to last dir on quit)
+# ---------------------
+function rr() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+# ---------------------
 # Aliases
 # ---------------------
-alias rr="ranger"
 alias v="nvim"
 alias ll="ls -la"
 alias gs="git status"

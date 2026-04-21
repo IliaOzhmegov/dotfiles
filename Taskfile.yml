@@ -11,6 +11,7 @@ tasks:
       - task: stow:alacritty
       - task: stow:zsh
       - task: stow:starship
+      - task: stow:yazi
 
   unstow:
     desc: Unlink all packages
@@ -18,6 +19,7 @@ tasks:
       - task: unstow:alacritty
       - task: unstow:zsh
       - task: unstow:starship
+      - task: unstow:yazi
 
   setup:fonts:
     desc: Install required fonts
@@ -79,3 +81,22 @@ tasks:
     desc: Unlink starship config
     cmds:
       - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} starship
+
+  setup:yazi:
+    desc: Install yazi file manager
+    cmds:
+      - brew install yazi
+    status:
+      - command -v yazi
+
+  stow:yazi:
+    desc: Link yazi config
+    deps: [setup:yazi]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} yazi
+      - ya pkg add matt-dong-123/gruvbox-material
+
+  unstow:yazi:
+    desc: Unlink yazi config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} yazi

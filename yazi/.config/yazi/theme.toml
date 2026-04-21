@@ -1,0 +1,6 @@
+# Yazi theme — use default with minor tweaks
+# Docs: https://yazi-rs.github.io/docs/configuration/theme
+# Leave empty to use the default theme, or customize here
+
+[flavor]
+dark = "gruvbox-material"

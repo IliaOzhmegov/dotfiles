@@ -16,7 +16,7 @@ brew install stow go-task
 | zsh        | `~/.zshrc`                             |
 | starship   | `~/.config/starship.toml`              |
 | nvim       | `~/.config/nvim/`                      |
-| ranger     | `~/.config/ranger/`                    |
+| yazi       | `~/.config/yazi/`                      |
 | tmux       | `~/.tmux.conf`, `~/.tmux.conf.local`   |
 | ideavim    | `~/.ideavimrc`                         |
 | zathura    | `~/.config/zathura/zathurarc`          |
