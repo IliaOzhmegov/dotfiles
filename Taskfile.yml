@@ -12,6 +12,7 @@ tasks:
       - task: stow:zsh
       - task: stow:starship
       - task: stow:yazi
+      - task: stow:tmux
 
   unstow:
     desc: Unlink all packages
@@ -20,6 +21,7 @@ tasks:
       - task: unstow:zsh
       - task: unstow:starship
       - task: unstow:yazi
+      - task: unstow:tmux
 
   setup:fonts:
     desc: Install required fonts
@@ -100,3 +102,21 @@ tasks:
     desc: Unlink yazi config
     cmds:
       - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} yazi
+
+  setup:tmux:
+    desc: Install tmux
+    cmds:
+      - brew install tmux
+    status:
+      - command -v tmux
+
+  stow:tmux:
+    desc: Link tmux config
+    deps: [setup:tmux]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} tmux
+
+  unstow:tmux:
+    desc: Unlink tmux config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} tmux
