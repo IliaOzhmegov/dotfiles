@@ -12,11 +12,12 @@ brew install stow go-task
 
 | Package    | What it manages                        |
 |------------|----------------------------------------|
-| alacritty  | `~/.config/alacritty/alacritty.yml`    |
+| alacritty  | `~/.config/alacritty/alacritty.toml`   |
+| zsh        | `~/.zshrc`                             |
+| starship   | `~/.config/starship.toml`              |
 | nvim       | `~/.config/nvim/`                      |
 | ranger     | `~/.config/ranger/`                    |
 | tmux       | `~/.tmux.conf`, `~/.tmux.conf.local`   |
-| zsh        | `~/.zshrc`                             |
 | ideavim    | `~/.ideavimrc`                         |
 | zathura    | `~/.config/zathura/zathurarc`          |
 
@@ -31,6 +32,39 @@ task unstow
 
 # Link a single package
 stow -t ~ <package>
+```
+
+## fzf cheatsheet
+
+### Keybindings
+
+| Shortcut   | Action                              |
+|------------|-------------------------------------|
+| `Ctrl+R`   | Fuzzy search command history        |
+| `Ctrl+T`   | Fuzzy find files                    |
+| `Alt+C`    | Fuzzy find and cd into a directory  |
+| `**<Tab>`  | Fuzzy completion (works everywhere) |
+
+### Tab completion examples
+
+```bash
+cd **<Tab>       # fuzzy pick directory
+vim **<Tab>      # fuzzy pick file
+kill **<Tab>     # fuzzy pick process
+ssh **<Tab>      # fuzzy pick host
+```
+
+### Pipe anything into fzf
+
+```bash
+# Fuzzy-pick a git branch to checkout
+git branch | fzf | xargs git checkout
+
+# Fuzzy-pick a process to kill
+ps aux | fzf | awk '{print $2}' | xargs kill
+
+# Preview files while searching
+fzf --preview 'cat {}'
 ```
 
 ## Resources

@@ -9,11 +9,15 @@ tasks:
     desc: Link all packages
     cmds:
       - task: stow:alacritty
+      - task: stow:zsh
+      - task: stow:starship
 
   unstow:
     desc: Unlink all packages
     cmds:
       - task: unstow:alacritty
+      - task: unstow:zsh
+      - task: unstow:starship
 
   setup:fonts:
     desc: Install required fonts
@@ -39,3 +43,39 @@ tasks:
     desc: Unlink alacritty config
     cmds:
       - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} alacritty
+
+  setup:starship:
+    desc: Install starship prompt
+    cmds:
+      - brew install starship
+    status:
+      - command -v starship
+
+  setup:fzf:
+    desc: Install fzf
+    cmds:
+      - brew install fzf
+    status:
+      - command -v fzf
+
+  stow:zsh:
+    desc: Link zsh config
+    deps: [setup:starship, setup:fzf]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} zsh
+
+  unstow:zsh:
+    desc: Unlink zsh config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} zsh
+
+  stow:starship:
+    desc: Link starship config
+    deps: [setup:starship]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} starship
+
+  unstow:starship:
+    desc: Unlink starship config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} starship
