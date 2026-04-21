@@ -1,0 +1,70 @@
+# Alacritty config — updated 2026-04-22
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "Full"
+startup_mode = "Maximized"
+opacity = 0.90
+
+[window.padding]
+x = 10
+y = 10
+
+[window.dimensions]
+columns = 280
+lines = 60
+
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+[font]
+size = 16.0
+builtin_box_drawing = true
+
+[font.normal]
+family = "UbuntuMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "UbuntuMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "UbuntuMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "UbuntuMono Nerd Font"
+style = "Bold Italic"
+
+# Colors (Hyper theme)
+[colors.primary]
+background = "#111111"
+foreground = "#ffffff"
+
+[colors.cursor]
+text = "#F81CE5"
+cursor = "#ffffff"
+
+[colors.normal]
+black   = "#000000"
+red     = "#fe0100"
+green   = "#00a600"
+yellow  = "#feff00"
+blue    = "#0066ff"
+magenta = "#cc00ff"
+cyan    = "#00ffff"
+white   = "#d0d0d0"
+
+[colors.bright]
+black   = "#808080"
+red     = "#fe0100"
+green   = "#00d900"
+yellow  = "#feff00"
+blue    = "#0066ff"
+magenta = "#cc00ff"
+cyan    = "#00ffff"
+white   = "#ffffff"

@@ -1,0 +1,41 @@
+version: "3"
+
+vars:
+  STOW_DIR: "{{.ROOT_DIR}}"
+  TARGET: "{{.HOME}}"
+
+tasks:
+  stow:
+    desc: Link all packages
+    cmds:
+      - task: stow:alacritty
+
+  unstow:
+    desc: Unlink all packages
+    cmds:
+      - task: unstow:alacritty
+
+  setup:fonts:
+    desc: Install required fonts
+    cmds:
+      - brew install --cask font-ubuntu-mono-nerd-font
+    status:
+      - test -f ~/Library/Fonts/UbuntuMonoNerdFont-Regular.ttf
+
+  setup:alacritty:
+    desc: Install alacritty
+    cmds:
+      - brew install --cask alacritty
+    status:
+      - test -d /Applications/Alacritty.app
+
+  stow:alacritty:
+    desc: Link alacritty config
+    deps: [setup:alacritty, setup:fonts]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} alacritty
+
+  unstow:alacritty:
+    desc: Unlink alacritty config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} alacritty
