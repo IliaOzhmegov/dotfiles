@@ -1,9 +1,0 @@
-TODO:
-0. Plugin autoload | done | not sure if I did it correctly
-1. return super-tab, how it was in chris@machine configs
-2. brackets auto-pairing
-3. some shit with indents in the open bracket
-4. Snippet for adding cell (usual/markdown)
-5. Install python debugger [https://alpha2phi.medium.com/neovim-for-beginners-debugging-using-dap-44626a767f57]
-6. <c-k> doesn't work
-6. NVIM-tree open file in new tab with `t`

@@ -13,6 +13,7 @@ tasks:
       - task: stow:starship
       - task: stow:yazi
       - task: stow:tmux
+      - task: stow:nvim
 
   unstow:
     desc: Unlink all packages
@@ -22,6 +23,7 @@ tasks:
       - task: unstow:starship
       - task: unstow:yazi
       - task: unstow:tmux
+      - task: unstow:nvim
 
   setup:fonts:
     desc: Install required fonts
@@ -120,3 +122,35 @@ tasks:
     desc: Unlink tmux config
     cmds:
       - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} tmux
+
+  setup:node:
+    desc: Install node (for LSP servers)
+    cmds:
+      - brew install node
+    status:
+      - command -v node
+
+  setup:fd:
+    desc: Install fd (for telescope)
+    cmds:
+      - brew install fd
+    status:
+      - command -v fd
+
+  setup:nvim:
+    desc: Install neovim
+    cmds:
+      - brew install neovim
+    status:
+      - command -v nvim
+
+  stow:nvim:
+    desc: Link nvim config
+    deps: [setup:nvim, setup:fonts, setup:node, setup:fd]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} nvim
+
+  unstow:nvim:
+    desc: Unlink nvim config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} nvim
