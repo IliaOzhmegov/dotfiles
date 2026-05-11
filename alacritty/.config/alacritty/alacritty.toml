@@ -6,7 +6,7 @@ TERM = "xterm-256color"
 [window]
 decorations = "Full"
 startup_mode = "SimpleFullscreen"
-opacity = 0.90
+opacity = 0.95
 
 [window.padding]
 x = 10
@@ -40,31 +40,31 @@ style = "Italic"
 family = "UbuntuMono Nerd Font"
 style = "Bold Italic"
 
-# Colors (Hyper theme)
+# Colors (Gruvbox Material)
 [colors.primary]
-background = "#111111"
-foreground = "#ffffff"
+background = "#282828"
+foreground = "#d4be98"
 
 [colors.cursor]
-text = "#F81CE5"
-cursor = "#ffffff"
+text = "#282828"
+cursor = "#d4be98"
 
 [colors.normal]
-black   = "#000000"
-red     = "#fe0100"
-green   = "#00a600"
-yellow  = "#feff00"
-blue    = "#0066ff"
-magenta = "#cc00ff"
-cyan    = "#00ffff"
-white   = "#d0d0d0"
+black   = "#665c54"
+red     = "#ea6962"
+green   = "#a9b665"
+yellow  = "#d8a657"
+blue    = "#7daea3"
+magenta = "#d3869b"
+cyan    = "#89b482"
+white   = "#d4be98"
 
 [colors.bright]
-black   = "#808080"
-red     = "#fe0100"
-green   = "#00d900"
-yellow  = "#feff00"
-blue    = "#0066ff"
-magenta = "#cc00ff"
-cyan    = "#00ffff"
-white   = "#ffffff"
+black   = "#928374"
+red     = "#ea6962"
+green   = "#a9b665"
+yellow  = "#d8a657"
+blue    = "#7daea3"
+magenta = "#d3869b"
+cyan    = "#89b482"
+white   = "#d4be98"
