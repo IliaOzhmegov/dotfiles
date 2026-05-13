@@ -15,7 +15,7 @@ return {
       ensure_installed = {
         "pyright",        -- Python
         "lua_ls",         -- Lua
-        "sqlls",          -- SQL
+        "sqls",           -- SQL
         "yamlls",         -- YAML (dbt schema files)
       },
     },
@@ -65,7 +65,7 @@ return {
           map("<leader>rn", vim.lsp.buf.rename, "Rename")
           map("<leader>ca", vim.lsp.buf.code_action, "Code action")
           map("K", vim.lsp.buf.hover, "Hover documentation")
-          map("<C-k>", vim.lsp.buf.signature_help, "Signature help")
+          map("<leader>sh", vim.lsp.buf.signature_help, "Signature help")
         end,
       })
 
@@ -94,8 +94,10 @@ return {
         },
       })
 
-      vim.lsp.config("sqlls", {
+      vim.lsp.config("sqls", {
         capabilities = capabilities,
+        root_markers = { "config.yml", "dbt_project.yml", ".git" },
+        filetypes = { "sql", "mysql", "sql.jinja" },
       })
 
       vim.lsp.config("yamlls", {
@@ -110,7 +112,7 @@ return {
       })
 
       -- Enable all configured servers
-      vim.lsp.enable({ "pyright", "lua_ls", "sqlls", "yamlls" })
+      vim.lsp.enable({ "pyright", "lua_ls", "sqls", "yamlls" })
     end,
   },
 }

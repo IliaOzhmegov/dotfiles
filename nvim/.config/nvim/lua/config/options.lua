@@ -67,3 +67,9 @@ opt.completeopt = { "menuone", "noselect" }
 -- Misc
 opt.shortmess:append("c")
 opt.iskeyword:append("-")
+
+-- Folding (treesitter-based)
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 99        -- start with all folds open
+opt.foldlevelstart = 99

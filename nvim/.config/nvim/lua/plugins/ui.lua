@@ -39,14 +39,23 @@ return {
 
   -- File explorer
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
     keys = {
-      { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "File explorer" },
+      { "<leader>e", "<cmd>Neotree toggle<CR>", desc = "File explorer" },
     },
     opts = {
-      filters = { dotfiles = false },
-      view = { width = 35 },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+        },
+      },
+      window = { width = 35 },
     },
   },
 

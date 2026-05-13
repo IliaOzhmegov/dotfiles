@@ -8,7 +8,12 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     opts = {
-      panel = { enabled = false },
+      auth_provider_url = "https://ratepay.ghe.com/",
+
+      panel = {
+        enabled = false,
+      },
+
       suggestion = {
         enabled = true,
         auto_trigger = true,
@@ -21,11 +26,35 @@ return {
           accept_line = "<M-j>",
           next = "<M-]>",
           prev = "<M-[>",
-          dismiss = false,
+          dismiss = false, -- keep the ESC workaround
         },
       },
-      nes = { enabled = false },
+
+      nes = {
+        enabled = false,
+      },
+
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        ["."] = false,
+      },
+
+      should_attach = function(_, bufname)
+        local name = vim.fn.fnamemodify(bufname, ":t"):lower()
+
+        if name:match("^%.env") then
+          return false
+        end
+        if name:match("secret") or name:match("credentials") then
+          return false
+        end
+
+        return true
+      end,
     },
+
     config = function(_, opts)
       require("copilot").setup(opts)
 
@@ -44,6 +73,12 @@ return {
           sug.dismiss()
         end
       end, { desc = "Dismiss Copilot suggestion" })
+
+      vim.keymap.set("n", "<leader>ca", "<cmd>Copilot auth signin<cr>", { desc = "Copilot sign in" })
+      vim.keymap.set("n", "<leader>ci", "<cmd>Copilot auth info<cr>", { desc = "Copilot auth info" })
+      vim.keymap.set("n", "<leader>ct", function()
+        sug.toggle_auto_trigger()
+      end, { desc = "Copilot toggle auto-trigger" })
     end,
   },
 }

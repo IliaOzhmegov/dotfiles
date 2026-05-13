@@ -19,7 +19,7 @@ return {
     opts = {
       formatters_by_ft = {
         python = { "ruff_format" },
-        sql = { "sqlfmt" },
+        -- sql = { "sqlfmt" }, -- Disabled: install sqlfmt to enable
         lua = { "stylua" },
         yaml = { "prettier" },
         json = { "prettier" },
@@ -40,7 +40,7 @@ return {
       local lint = require("lint")
       lint.linters_by_ft = {
         python = { "ruff" },
-        sql = { "sqlfluff" },
+        -- sql = { "sqlfluff" }, -- Disabled: install sqlfluff to enable
         yaml = { "yamllint" },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {

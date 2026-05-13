@@ -5,7 +5,7 @@ TERM = "xterm-256color"
 
 [window]
 decorations = "Full"
-startup_mode = "SimpleFullscreen"
+startup_mode = "Windowed"
 opacity = 0.98
 
 [window.padding]
@@ -42,11 +42,11 @@ style = "Bold Italic"
 
 # Colors (Gruvbox Material)
 [colors.primary]
-background = "#282828"
+background = "#1d2021"
 foreground = "#d4be98"
 
 [colors.cursor]
-text = "#282828"
+text = "#1d2021"
 cursor = "#d4be98"
 
 [colors.normal]
@@ -61,10 +61,10 @@ white   = "#d4be98"
 
 [colors.bright]
 black   = "#928374"
-red     = "#ea6962"
-green   = "#a9b665"
-yellow  = "#d8a657"
-blue    = "#7daea3"
+red     = "#fb4934"
+green   = "#b8bb26"
+yellow  = "#fabd2f"
+blue    = "#83a598"
 magenta = "#d3869b"
-cyan    = "#89b482"
-white   = "#d4be98"
+cyan    = "#8ec07c"
+white   = "#fbf1c7"

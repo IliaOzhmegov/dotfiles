@@ -7,18 +7,19 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter").setup()
-
-      -- Install parsers
-      local ensure = {
+      local ts = require("nvim-treesitter")
+      
+      -- Ensure parsers are installed
+      local parsers = {
         "python", "sql", "lua", "vim", "vimdoc", "yaml",
-        "toml", "json", "markdown", "markdown_inline", "bash",
+        "toml", "json", "markdown", "markdown_inline", "bash", "jinja2",
       }
-      for _, lang in ipairs(ensure) do
-        pcall(function() vim.treesitter.language.add(lang) end)
+      
+      for _, lang in ipairs(parsers) do
+        pcall(function() vim.treesitter.language.register(lang) end)
       end
 
-      -- Enable treesitter highlighting and indentation
+      -- Enable treesitter highlighting
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true }),
         callback = function()
