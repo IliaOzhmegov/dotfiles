@@ -8,6 +8,7 @@ tasks:
   stow:
     desc: Link all packages
     cmds:
+      - task: stow:ghostty
       - task: stow:alacritty
       - task: stow:zsh
       - task: stow:starship
@@ -18,6 +19,7 @@ tasks:
   unstow:
     desc: Unlink all packages
     cmds:
+      - task: unstow:ghostty
       - task: unstow:alacritty
       - task: unstow:zsh
       - task: unstow:starship
@@ -31,6 +33,24 @@ tasks:
       - brew install --cask font-ubuntu-mono-nerd-font
     status:
       - test -f ~/Library/Fonts/UbuntuMonoNerdFont-Regular.ttf
+
+  setup:ghostty:
+    desc: Install ghostty terminal
+    cmds:
+      - brew install --cask ghostty
+    status:
+      - test -d /Applications/Ghostty.app
+
+  stow:ghostty:
+    desc: Link ghostty config
+    deps: [setup:ghostty, setup:fonts]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} ghostty
+
+  unstow:ghostty:
+    desc: Unlink ghostty config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} ghostty
 
   setup:alacritty:
     desc: Install alacritty
