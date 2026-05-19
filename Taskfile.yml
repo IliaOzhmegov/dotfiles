@@ -10,6 +10,7 @@ tasks:
     cmds:
       - task: stow:ghostty
       - task: stow:alacritty
+      - task: stow:karabiner
       - task: stow:ssh
       - task: stow:git
       - task: stow:zsh
@@ -23,6 +24,7 @@ tasks:
     cmds:
       - task: unstow:ghostty
       - task: unstow:alacritty
+      - task: unstow:karabiner
       - task: unstow:ssh
       - task: unstow:git
       - task: unstow:zsh
@@ -37,6 +39,24 @@ tasks:
       - brew install --cask font-ubuntu-mono-nerd-font
     status:
       - test -f ~/Library/Fonts/UbuntuMonoNerdFont-Regular.ttf
+
+  setup:karabiner:
+    desc: Install Karabiner-Elements
+    cmds:
+      - brew install --cask karabiner-elements
+    status:
+      - test -d /Applications/Karabiner-Elements.app
+
+  stow:karabiner:
+    desc: Link Karabiner config
+    deps: [setup:karabiner]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} karabiner
+
+  unstow:karabiner:
+    desc: Unlink Karabiner config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} karabiner
 
   stow:ssh:
     desc: Link ssh config
