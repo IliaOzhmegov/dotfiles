@@ -137,6 +137,27 @@ tasks:
     status:
       - command -v fd
 
+  setup:ripgrep:
+    desc: Install ripgrep (for live-grep)
+    cmds:
+      - brew install ripgrep
+    status:
+      - command -v rg
+
+  setup:tree-sitter:
+    desc: Install tree-sitter-cli (for treesitter)
+    cmds:
+      - brew install tree-sitter-cli
+    status:
+      - command -v tree-sitter
+
+  setup:go:
+    desc: Install Go (for Mason Go-based LSP servers)
+    cmds:
+      - brew install go
+    status:
+      - command -v go
+
   setup:nvim:
     desc: Install neovim
     cmds:
@@ -146,7 +167,7 @@ tasks:
 
   stow:nvim:
     desc: Link nvim config
-    deps: [setup:nvim, setup:fonts, setup:node, setup:fd]
+    deps: [setup:nvim, setup:fonts, setup:node, setup:fd, setup:ripgrep, setup:tree-sitter, setup:go]
     cmds:
       - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} nvim
 
