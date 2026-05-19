@@ -1,5 +1,7 @@
 # My dotfiles
 
+[Homebrew](https://brew.sh/)
+
 Managed with [GNU Stow](https://www.gnu.org/software/stow/) and [Task](https://taskfile.dev/).
 
 ## Prerequisites
