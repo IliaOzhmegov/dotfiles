@@ -3,7 +3,8 @@ font-family = UbuntuMono Nerd Font
 font-size = 16
 
 # Window
-background-opacity = 0.98
+background-opacity = 0.94
+background-blur = 20
 window-padding-x = 10
 window-padding-y = 10
 
