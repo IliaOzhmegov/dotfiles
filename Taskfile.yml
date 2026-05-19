@@ -5,6 +5,27 @@ vars:
   TARGET: "{{.HOME}}"
 
 tasks:
+  setup:
+    desc: Install all tools
+    cmds:
+      - task: setup:fonts
+      - task: setup:karabiner
+      - task: setup:ghostty
+      - task: setup:alacritty
+      - task: setup:starship
+      - task: setup:fzf
+      - task: setup:yazi
+      - task: setup:yazi-theme
+      - task: setup:tmux
+      - task: setup:node
+      - task: setup:fd
+      - task: setup:ripgrep
+      - task: setup:tree-sitter
+      - task: setup:gcloud
+      - task: setup:uv
+      - task: setup:go
+      - task: setup:nvim
+
   stow:
     desc: Link all packages
     cmds:
@@ -221,6 +242,20 @@ tasks:
       - brew install tree-sitter-cli
     status:
       - command -v tree-sitter
+
+  setup:gcloud:
+    desc: Install Google Cloud SDK
+    cmds:
+      - brew install --cask google-cloud-sdk
+    status:
+      - command -v gcloud
+
+  setup:uv:
+    desc: Install uv (Python package manager)
+    cmds:
+      - brew install uv
+    status:
+      - command -v uv
 
   setup:go:
     desc: Install Go (for Mason Go-based LSP servers)

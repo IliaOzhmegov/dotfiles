@@ -18,7 +18,11 @@ brew install stow go-task
 
 | Package    | What it manages                        |
 |------------|----------------------------------------|
+| ghostty    | `~/.config/ghostty/config`             |
 | alacritty  | `~/.config/alacritty/alacritty.toml`   |
+| karabiner  | `~/.config/karabiner/karabiner.json`   |
+| ssh        | `~/.ssh/config`                        |
+| git        | `~/.gitconfig`                         |
 | zsh        | `~/.zshrc`                             |
 | starship   | `~/.config/starship.toml`              |
 | nvim       | `~/.config/nvim/`                      |
@@ -30,8 +34,9 @@ brew install stow go-task
 ## Usage
 
 ```bash
-# Link all packages
-task stow
+# Fresh machine setup
+task setup   # install all tools via Homebrew
+task stow    # link all configs
 
 # Unlink all packages
 task unstow
@@ -117,6 +122,14 @@ ps aux | fzf | awk '{print $2}' | xargs kill
 # Preview files while searching
 fzf --preview 'cat {}'
 ```
+
+## Dadbod (BigQuery)
+
+vim-dadbod is configured as a SQL query runner from within Neovim (`<leader>db` to toggle UI, `<leader>E` to run a query).
+
+Table listing in the sidebar does **not work** with BigQuery — querying `INFORMATION_SCHEMA.TABLES` requires project-level permissions that are not available. Use the Cloud Console for schema/table browsing.
+
+Connection URL format: `bigquery:<project-id>`
 
 ## Resources
 
