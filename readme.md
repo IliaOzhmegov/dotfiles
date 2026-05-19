@@ -2,6 +2,13 @@
 
 [Homebrew](https://brew.sh/)
 
+[Ghostty](brew install --cask ghostty):
+```bash
+brew install --cask ghostty
+```
+
+
+
 Managed with [GNU Stow](https://www.gnu.org/software/stow/) and [Task](https://taskfile.dev/).
 
 ## Prerequisites
