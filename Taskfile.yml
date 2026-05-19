@@ -93,12 +93,19 @@ tasks:
     status:
       - command -v yazi
 
-  stow:yazi:
-    desc: Link yazi config
+  setup:yazi-theme:
+    desc: Install yazi gruvbox-material theme
     deps: [setup:yazi]
     cmds:
-      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} yazi
       - ya pkg add matt-dong-123/gruvbox-material
+    status:
+      - grep -q "gruvbox-material" ~/.config/yazi/package.toml
+
+  stow:yazi:
+    desc: Link yazi config
+    deps: [setup:yazi, setup:yazi-theme]
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} yazi
 
   unstow:yazi:
     desc: Unlink yazi config
