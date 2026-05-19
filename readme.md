@@ -1,6 +1,10 @@
 # My dotfiles
 
 [Homebrew](https://brew.sh/)
+Ghossty and Claude:
+```bash
+brew install --cask ghostty claude-code
+```
 
 Managed with [GNU Stow](https://www.gnu.org/software/stow/) and [Task](https://taskfile.dev/).
 
