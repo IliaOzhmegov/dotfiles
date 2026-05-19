@@ -10,6 +10,7 @@ tasks:
     cmds:
       - task: stow:ghostty
       - task: stow:alacritty
+      - task: stow:git
       - task: stow:zsh
       - task: stow:starship
       - task: stow:yazi
@@ -21,6 +22,7 @@ tasks:
     cmds:
       - task: unstow:ghostty
       - task: unstow:alacritty
+      - task: unstow:git
       - task: unstow:zsh
       - task: unstow:starship
       - task: unstow:yazi
@@ -33,6 +35,16 @@ tasks:
       - brew install --cask font-ubuntu-mono-nerd-font
     status:
       - test -f ~/Library/Fonts/UbuntuMonoNerdFont-Regular.ttf
+
+  stow:git:
+    desc: Link git config
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} git
+
+  unstow:git:
+    desc: Unlink git config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} git
 
   setup:ghostty:
     desc: Install ghostty terminal

@@ -1,0 +1,11 @@
+[user]
+	name = Ilia Ozhmegov
+	email = elijahozhmegov@gmail.com
+
+[alias]
+	st = status
+	aa = add -A
+	cm = commit -m
+	ca = commit --amend
+	cob = checkout -b
+	lg = log --oneline --graph --decorate
