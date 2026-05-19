@@ -7,5 +7,6 @@
 	aa = add -A
 	cm = commit -m
 	ca = commit --amend
+	co = checkout
 	cob = checkout -b
 	lg = log --oneline --graph --decorate
