@@ -10,6 +10,7 @@ tasks:
     cmds:
       - task: stow:ghostty
       - task: stow:alacritty
+      - task: stow:ssh
       - task: stow:git
       - task: stow:zsh
       - task: stow:starship
@@ -22,6 +23,7 @@ tasks:
     cmds:
       - task: unstow:ghostty
       - task: unstow:alacritty
+      - task: unstow:ssh
       - task: unstow:git
       - task: unstow:zsh
       - task: unstow:starship
@@ -35,6 +37,16 @@ tasks:
       - brew install --cask font-ubuntu-mono-nerd-font
     status:
       - test -f ~/Library/Fonts/UbuntuMonoNerdFont-Regular.ttf
+
+  stow:ssh:
+    desc: Link ssh config
+    cmds:
+      - stow -v -d {{.STOW_DIR}} -t {{.TARGET}} ssh
+
+  unstow:ssh:
+    desc: Unlink ssh config
+    cmds:
+      - stow -v -D -d {{.STOW_DIR}} -t {{.TARGET}} ssh
 
   stow:git:
     desc: Link git config
